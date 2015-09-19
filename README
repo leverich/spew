@@ -1,0 +1,14 @@
+spew - stupid proc extraction worker
+
+This is a dumb replacement for sysstat/iostat/vmstat/etc.  It takes
+snapshots of files in /proc and saves them in an easy to
+parse-with-python format.  The intent is to make resource utilization
+tracking more agile, more amenable to post-processing, and to
+eventually incorporate container group-based resource usage tracking.
+
+Basically, we dump timestamped file contents encapsulated as (possibly
+compressed) json dicts.  File contents can be parsed as part of
+post-processing.  Timestamp is floating-point seconds since the
+epoch.
+
+  <TIMESTAMP> <json string>
